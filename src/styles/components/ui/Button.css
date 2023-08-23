@@ -1,0 +1,40 @@
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 20px;
+    margin-top: 30px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-family: 'Poppins';
+    font-size: 14px;
+    font-weight: bold;
+    user-select: none;
+    color: var(--color-primary);
+    transition: 0.5s ease-out;
+    cursor: pointer;
+}
+
+.button:hover {
+    color: var(--color-secondary);
+}
+
+.button.filled {
+    color: var(--color-dark);
+    background-color: var(--color-primary);
+}
+
+.button.filled:hover {
+    background-color: var(--color-secondary);
+}
+
+.button.outlined {
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+}
+
+.button.outlined:hover {
+    color: var(--color-secondary);
+    border: 2px solid var(--color-secondary);
+}

@@ -1,0 +1,67 @@
+:root {
+    --background-primary: #edebe8;
+    --background-secondary: #f5f5f5;
+    --logo-color: #28b79b;
+}
+
+:root {
+    --primary-color: #0f868a;
+    --text-primary: #202020;
+    --primary-color-hover: #0b6c70;
+}
+
+body {
+    color: var(--text-primary);
+    background-color: var(--background-secondary);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-color-hover);
+}
+
+.txt-primary {
+    color: var(--primary-color);
+}
+
+.hover\:txt-primary:hover {
+    color: var(--primary-color);
+}
+
+.hover\:txt-primary-hover:hover {
+    color: var(--primary-color-hover);
+}
+
+.bg-primary {
+    background-color: var(--primary-color);
+}
+
+.border-primary {
+    border-color: var(--primary-color);
+}
+
+.ring-primary {
+    --tw-ring-color: var(--primary-color);
+}
+
+.focus\:ring-primary:focus {
+    --tw-ring-opacity: 1;
+    --tw-ring-color: var(--primary-color);
+}
+
+.focus\:border-primary:focus {
+    --tw-border-opacity: 1;
+    border-color: var(--primary-color);
+}
+
+.hover\:border-primary:hover {
+    --tw-border-opacity: 1;
+    border-color: var(--primary-color);
+}
+
+.hover\:bg-primary:hover {
+    background-color: var(--primary-color-hover);
+}

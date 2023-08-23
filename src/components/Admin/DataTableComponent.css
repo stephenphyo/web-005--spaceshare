@@ -1,0 +1,61 @@
+.rdt_Table {
+    width: 100%;
+    --tw-text-opacity: 1;
+    color: rgb(107 114 128 / var(--tw-text-opacity));
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    text-align: left;
+    border-width: 1px;
+    --tw-border-opacity: 1;
+    border-color: rgb(229 231 235 / var(--tw-border-opacity));
+}
+.rdt_TableRow {
+
+}
+.rdt_TableCol {
+
+}
+.rdt_TableCol_Sortable {
+
+}
+.rdt_TableCell {
+
+}
+.rdt_TableHeader {
+
+}
+.rdt_TableFooter {
+
+}
+.rdt_TableHead {
+
+}
+
+.rdt_TableHeadRow {
+    text-transform: uppercase !important;
+    --tw-bg-opacity: 1 !important;
+    background-color: rgb(249 250 251 / var(--tw-bg-opacity)) !important;
+    border-bottom-width: 1px !important;
+}
+
+.rdt_TableHeadRow .rdt_TableCol {
+    --tw-text-opacity: 1 !important;
+    font-size: 0.75rem !important;
+    line-height: 1rem !important;
+    font-weight: 700;
+    color: rgb(55 65 81 / var(--tw-text-opacity)) !important;
+}
+
+.rdt_TableHeadRow .rdt_TableCol_Sortable {
+    --tw-text-opacity: 1 !important;
+    font-size: 0.75rem !important;
+    line-height: 1rem !important;
+    font-weight: 700;
+    color: rgb(55 65 81 / var(--tw-text-opacity)) !important;
+}
+.rdt_TableBody {
+
+}
+.rdt_ExpanderRow {
+
+}

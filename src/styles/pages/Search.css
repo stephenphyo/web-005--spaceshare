@@ -1,0 +1,5 @@
+.searchbar-container {
+    transition: transform .3s;
+    -webkit-backdrop-filter: blur(11px);
+    backdrop-filter: blur(11px);
+}
