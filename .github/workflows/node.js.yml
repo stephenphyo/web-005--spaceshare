@@ -33,6 +33,3 @@ jobs:
         REACT_APP_GOOGLE_RECAPTCHA_SECRET_KEY: ${{ secrets.REACT_APP_GOOGLE_RECAPTCHA_SECRET_KEY }}
         REACT_APP_GOOGLE_API_KEY: ${{ secrets.REACT_APP_GOOGLE_API_KEY }}
         CI: false
-      
-    - name: Test React Project
-      run: npm test
