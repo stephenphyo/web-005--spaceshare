@@ -37,7 +37,7 @@ jobs:
     - uses: mr-smithers-excellent/docker-build-push@v6
       name: Docker Build & Push Action
       with:
-        image: stephenphyo/web-005-spaceshare-frontend:1.02
+        image: stephenphyo/web-005-spaceshare-frontend
         registry: docker.io
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
