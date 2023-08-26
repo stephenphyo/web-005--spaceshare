@@ -28,6 +28,10 @@ jobs:
       - name: Build React Project
         run: npm run build --if-present
         env:
+          REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
+          REACT_APP_GOOGLE_RECAPTCHA_SITE_KEY: ${{ secrets.REACT_APP_GOOGLE_RECAPTCHA_SITE_KEY }}
+          REACT_APP_GOOGLE_RECAPTCHA_SECRET_KEY: ${{ secrets.REACT_APP_GOOGLE_RECAPTCHA_SECRET_KEY }}
+          REACT_APP_GOOGLE_API_KEY: ${{ secrets.REACT_APP_GOOGLE_API_KEY }}
           CI: false
 
       - uses: mr-smithers-excellent/docker-build-push@v6
