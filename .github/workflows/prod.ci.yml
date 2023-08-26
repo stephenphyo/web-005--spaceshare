@@ -54,7 +54,7 @@ jobs:
         run: echo ${{  secrets.DOCKER_PASSWORD }} | docker login -u ${{  secrets.DOCKER_USERNAME }} --password-stdin
 
       - name: Build Docker Image
-        run: docker build --file Dockerfile.prod --tag stephenphyo/web-005-spaceshare-frontend:prod1.04 .
+        run: docker build --file Dockerfile.prod --tag stephenphyo/web-005-spaceshare-frontend:latest .
 
       - name: Push to Docker Hub Repository
-        run: docker push stephenphyo/web-005-spaceshare-frontend:prod1.04
+        run: docker push stephenphyo/web-005-spaceshare-frontend:latest
