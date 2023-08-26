@@ -192,6 +192,8 @@ function Header() {
                     </div>
                 </div>
             </nav>
+
+            {/* Sidebar Transition */}
             <Transition.Root show={open} as={Fragment}>
                 <Dialog as="div" className="relative z-[100]" onClose={setOpen}>
                     <Transition.Child
@@ -273,59 +275,51 @@ function Header() {
                                                                     </p>
                                                                 </div>
                                                                 <div className="ml-auto">
-                                                                    <a
-                                                                        href="#"
-                                                                        className="inline-flex items-center justify-center rounded-md border border-transparent btn-primary px-5 py-2.5 text-base font-sm text-white shadow-sm"
-                                                                        onClick={() => navigate('/profile')}
-                                                                    >
+                                                                    <div
+                                                                        className="inline-flex items-center justify-center rounded-md border border-transparent btn-primary px-5 py-2.5 text-base font-sm text-white shadow-sm cursor-pointer"
+                                                                        onClick={() => navigate('/profile')}>
                                                                         Edit
-                                                                    </a>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                             <div className="flex flex-col rounded-lg border border-gray-200">
                                                                 {
-                                                                    auth?.userType === 'TENANT'
+                                                                    auth?.userType === 'tenant'
                                                                         ?
                                                                         <>
                                                                             <div
                                                                                 className="text-gray-700 hover:bg-gray-200 hover:text-white px-4 py-2 text-base font-medium border-b border-gray-200 hover:cursor-pointer"
-                                                                                onClick={(e) => { navigate('/tenant/listing/create') }}
-                                                                            >
+                                                                                onClick={(e) => { navigate('/tenant/listing/create') }}>
                                                                                 Create New Finding
                                                                             </div>
                                                                             <div
                                                                                 className="text-gray-700 hover:bg-gray-200 hover:text-white px-4 py-2 text-base font-medium border-b border-gray-200 hover:cursor-pointer"
-                                                                                onClick={(e) => { navigate('/renter/properties') }}
-                                                                            >
+                                                                                onClick={(e) => { navigate('/renter/properties') }}>
                                                                                 My Findings
                                                                             </div>
                                                                             <div
                                                                                 className="text-gray-700 hover:bg-gray-200 hover:text-white px-4 py-2 text-base font-medium border-b border-gray-200 hover:cursor-pointer"
-                                                                                onClick={(e) => { navigate('/tenant/favorites') }}
-                                                                            >
+                                                                                onClick={(e) => { navigate('/tenant/favorites') }}>
                                                                                 My Favorites
                                                                             </div>
                                                                         </>
-                                                                        :
+                                                                        : auth?.userType === 'renter' &&
                                                                         <>
                                                                             <div
                                                                                 className="text-gray-700 hover:bg-gray-200 hover:text-white px-4 py-2 text-base font-medium border-b border-gray-200 hover:cursor-pointer"
-                                                                                onClick={(e) => { navigate('/renter/listing/create') }}
-                                                                            >
+                                                                                onClick={(e) => { navigate('/renter/listing/create') }}>
                                                                                 Create New Rental
                                                                             </div>
                                                                             <div
                                                                                 className="text-gray-700 hover:bg-gray-200 hover:text-white px-4 py-2 text-base font-medium border-b border-gray-200 hover:cursor-pointer"
-                                                                                onClick={(e) => { navigate('/renter/properties') }}
-                                                                            >
+                                                                                onClick={(e) => { navigate('/renter/properties') }}>
                                                                                 My Rentals
                                                                             </div>
                                                                         </>
                                                                 }
                                                                 <div
                                                                     className="text-gray-700 hover:bg-gray-200 hover:text-white px-4 py-2 text-base font-medium hover:cursor-pointer"
-                                                                    onClick={() => logout()}
-                                                                >
+                                                                    onClick={() => logout()}>
                                                                     Logout
                                                                 </div>
                                                             </div>
