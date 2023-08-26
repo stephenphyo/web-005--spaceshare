@@ -294,7 +294,7 @@ function Header() {
                                                                             </div>
                                                                             <div
                                                                                 className="text-gray-700 hover:bg-gray-200 hover:text-white px-4 py-2 text-base font-medium border-b border-gray-200 hover:cursor-pointer"
-                                                                                onClick={(e) => { navigate('/renter/properties') }}>
+                                                                                onClick={(e) => { navigate('/tenant/properties') }}>
                                                                                 My Findings
                                                                             </div>
                                                                             <div
