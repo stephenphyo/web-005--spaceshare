@@ -1,4 +1,4 @@
-name: Build & Test React Application
+name: Build React Application
 
 on:
   push:
@@ -35,5 +35,7 @@ jobs:
         with:
           image: stephenphyo/web-005-spaceshare-frontend
           registry: docker.io
+          tags: v1.06, latest
+          dockerfile: Dockerfile.dev
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
