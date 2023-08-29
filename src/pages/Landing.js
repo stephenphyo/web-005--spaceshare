@@ -148,7 +148,7 @@ function Landing() {
 
                 <section className='pb-10 border-b border-gray-200 mt-12 mb-4'>
                     <div className='mx-auto lg:mx-0 pb-4 mb-4 border-b border-gray-200 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4'>
-                        <h1>v1.07</h1>
+                        <h1>v1.08</h1>
                         <h2 className='text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl'>
                             Latest Rental Properties
                         </h2>

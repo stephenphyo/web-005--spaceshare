@@ -35,6 +35,9 @@ import NotFound404 from 'pages/Error/NotFound404';
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import ButtonOutlined from 'components/ui/ButtonOutlined';
 
+/* MUI Imports */
+import { CircularProgress } from '@mui/material';
+
 function ListingUpsert() {
 
     /* Initialization */
@@ -56,14 +59,14 @@ function ListingUpsert() {
     const [error, setError] = useState({});
     const [loading, setLoading] = useState(false);
     const [selectedImages, setSelectedImages] = useState([]);
-    const [existingImages, setExistingImages] = useState([]);
+    const [existingImages] = useState([]);
     const [selectedDocs, setSelectedDocs] = useState([]);
-    const [existingDocs, setExistingDocs] = useState([]);
+    const [existingDocs] = useState([]);
     const [amenities, setAmenities] = useState([]);
     const [selectedAmenities, setSelectedAmenities] = useState([]);
-    const [existingAmenities, setExistingAmenities] = useState([]);
+    const [existingAmenities] = useState([]);
     const [facilities, setFacilities] = useState([]);
-    const [existingFacilities, setExistingFacilities] = useState([]);
+    const [existingFacilities] = useState([]);
     const [selectedFacilities, setSelectedFacilities] = useState([]);
 
     const [toggleAmenity, setToggleAmenity] = useState(false);
@@ -160,7 +163,7 @@ function ListingUpsert() {
         checkPostalCode(data['postalCode']);
         checkOthers();
 
-        if (Object.keys(err).length == 0) {
+        if (Object.keys(err).length === 0) {
             setError({});
             return true;
         }
@@ -200,7 +203,19 @@ function ListingUpsert() {
             })
     };
 
+    const submit = () => {
+        if (checkData()) {
+            if (paramUpsert === 'create') {
+                create();
+            }
+            else if (paramUpsert === 'update') {
+                update();
+            }
+        }
+    };
+
     const create = async () => {
+        setLoading(true);
         try {
             // Upload Images to Firebase Storage
             const uploadedImageURLs = await uploadFilesUUID(
@@ -290,8 +305,6 @@ function ListingUpsert() {
                 propertyFacilityIDs: selectedFacilities
             };
 
-            console.log('Update')
-
             await Axios.put(`/api/${paramUser}/${auth?.id}/property/update/${propertyId}`,
                 updatedData,
                 { headers: { 'Content-Type': 'application/json' } }
@@ -317,18 +330,6 @@ function ListingUpsert() {
         }
     };
 
-    const submit = () => {
-        if (checkData()) {
-
-            if (paramUpsert === 'create') {
-                create();
-            }
-            else if (paramUpsert === 'update') {
-                update();
-            }
-        }
-    };
-
     /* useEffect */
     useEffect(() => {
         setRendered(true);
@@ -341,7 +342,7 @@ function ListingUpsert() {
         else if (paramUpsert === 'update') {
             get(propertyId);
         }
-    }, [paramUpsert]);
+    }, [paramUpsert, initData, propertyId]);
 
     useEffect(() => {
         if (!rendered) return;
@@ -377,7 +378,7 @@ function ListingUpsert() {
 
     useEffect(() => {
         if (rendered && !auth) navigate('/');
-    }, [rendered, auth]);
+    }, [rendered, auth, navigate]);
 
     if (!allowedPaths.includes(paramUpsert)) {
         return <NotFound404 />
@@ -652,9 +653,14 @@ function ListingUpsert() {
                             <div className="col-span-1 md:col-span-12">
                                 <ButtonFilled
                                     onClick={() => submit()}>
-                                    {paramUpsert === 'create'
-                                        ? 'Create Property Advertisement'
-                                        : 'Update Property Advertisement'}
+                                    {
+                                        !loading
+                                            ? <div >
+                                                <CircularProgress size='1.5rem' style={{ color: 'white' }} />
+                                            </div>
+                                            : paramUpsert === 'create'
+                                                ? 'Create Property Advertisement'
+                                                : 'Update Property Advertisement'}
                                 </ButtonFilled>
                             </div>
                             <div className="col-span-1 md:col-span-12 mt-1">

@@ -8,7 +8,7 @@ function CommentForm({ comment, setComment, handleSubmit, type }) {
                 <label htmlFor="comment" className="sr-only">Your comment</label>
                 <textarea
                     id="comment"
-                    rows="6"
+                    rows="4"
                     className="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none"
                     placeholder={type === 'comment' ? 'Write a comment...' : type === 'reply' && 'Write reply'}
                     value={comment}

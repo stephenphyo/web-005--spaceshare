@@ -51,6 +51,52 @@ function Profile() {
     /* useLocation */
     const location = useLocation();
 
+    /* Functions */
+    const saveProfile = () => {
+        setLoading(true);
+        Axios.put(`/api/${auth?.userType}/update/${auth?.id}`,
+            data,
+            { headers: { 'Content-Type': 'application/json' } }
+        )
+            .then(res => {
+                if (res.status === 200) {
+                    setData(res.data);
+                    sessionStorage.setItem('auth', JSON.stringify({ ...res.data, userType: auth?.userType }));
+                    window.location.reload();
+                }
+                setLoading(false);
+            })
+            .catch(err => {
+                if (err.response.status === 404) {
+                    setError(err.response.data);
+                }
+                else if (err.response.status === 500) {
+                    setError(err.response.data);
+                }
+                setLoading(false);
+            });
+    };
+
+    const getProfile = () => {
+        Axios.get(`/api/${paramUser}/${paramId}`,
+            data,
+            { headers: { 'Content-Type': 'application/json' } }
+        )
+            .then(res => {
+                if (res.status === 200) {
+                    setData(res.data);
+                }
+            })
+            .catch(err => {
+                if (err.response.status === 404 || err.response.status === 400) {
+                    setError('404');
+                }
+                else if (err.response.status === 500) {
+                    setError(err.response.data);
+                }
+            });
+    };
+
     /* useEffect */
     useEffect(() => {
         setRendered(true);
@@ -65,56 +111,18 @@ function Profile() {
 
     useEffect(() => {
         if (rendered && !auth && type === 'self') navigate('/login');
-    }, [rendered, auth, type]);
+    }, [rendered, auth, type, navigate]);
 
     useEffect(() => {
+        if (!rendered) return;
+
         if (type === 'self') {
-            if (rendered && auth) {
-                setData(auth);
-            }
+            if (auth) setData(auth);
         }
         else if (type === 'other') {
-            Axios.get(`/api/${paramUser}/${paramId}`,
-                data,
-                { headers: { 'Content-Type': 'application/json' } }
-            )
-                .then(res => {
-                    if (res.status === 200) {
-                        setData(res.data);
-                    }
-                })
-                .catch(err => {
-                    if (err.response.status === 404 || err.response.status === 400) {
-                        setError('404');
-                    }
-                    else if (err.response.status === 500) {
-                        setError(err.response.data);
-                    }
-                });
+            getProfile();
         }
     }, [type, rendered, auth]);
-
-    const saveProfile = () => {
-        Axios.put(`/api/${auth?.userType}/update/${auth?.id}`,
-            data,
-            { headers: { 'Content-Type': 'application/json' } }
-        )
-            .then(res => {
-                if (res.status === 200) {
-                    setData(res.data);
-                    sessionStorage.setItem('auth', JSON.stringify({ ...res.data, userType: auth?.userType }));
-                    window.location.reload();
-                }
-            })
-            .catch(err => {
-                if (err.response.status === 404) {
-                    setError(err.response.data);
-                }
-                else if (err.response.status === 500) {
-                    setError(err.response.data);
-                }
-            });
-    };
 
     if (error === '404' && rendered) {
         return <NotFound404 />
@@ -135,7 +143,8 @@ function Profile() {
                                     <div className="relative inline-block w-full">
                                         <div className="relative aspect-square mt-4 pt-[100%]">
                                             <img
-                                                className="absolute inset-0 w-full h-full object-cover object-center rounded-full"
+                                                className='absolute inset-0 w-full h-full border-8 border-gray shadow-md
+                                                    object-cover object-center rounded-full'
                                                 src={data?.photoUrl ? data.photoUrl : avatar}
                                                 alt="profile-img"
                                             />

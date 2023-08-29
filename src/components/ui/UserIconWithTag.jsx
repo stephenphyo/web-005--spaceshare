@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 
 /* Component Imports */
-import Badge from "components/ui/Badge";
+// import Badge from "components/ui/Badge";
 
 /* Asset Imports */
 import avatar from 'assets/images/avatar.png';
@@ -30,7 +30,7 @@ const UserIconWithTag = ({ userPhotoUrl, username, userId, userType, status }) =
                     />
                 </div>
 
-                <p className="ml-2 hover:txt-primary line-clamp-1 text-sm">
+                <p className="ml-2 font-medium hover:txt-primary line-clamp-1 text-sm">
                     {username}
                 </p>
             </div>

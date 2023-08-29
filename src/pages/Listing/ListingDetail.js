@@ -442,10 +442,9 @@ function ListingDetail() {
                                 : comments.map((comment, index) => (
                                     <Comment
                                         key={index}
-                                        userPhotoUrl={comment?.tenant?.photoUrl}
-                                        username={`${comment?.tenant?.firstName} ${comment?.tenant?.lastName}`}
-                                        date={formatPrettyDateTime(comment.commentedAt)}
-                                        text={comment.comment}
+                                        userData={comment?.tenant}
+                                        date={formatPrettyDateTime(comment?.commentedAt)}
+                                        comment={comment?.comment}
                                     />
                                 ))
                         }
