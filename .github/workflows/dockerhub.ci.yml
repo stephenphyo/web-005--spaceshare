@@ -70,9 +70,9 @@ jobs:
       - name: Pull Docker Image, Replace & Restart Container
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.DELOPYMENT_SERVER_HOSTNAME }}
-          username: ${{ secrets.DELOPYMENT_SERVER_USERNAME }}
-          password: ${{ secrets.DELOPYMENT_SERVER_PASSWORD }}
+          host: ${{ secrets.DEPLOYMENT_SERVER_HOSTNAME }}
+          username: ${{ secrets.DEPLOYMENT_SERVER_USERNAME }}
+          password: ${{ secrets.DEPLOYMENT_SERVER_PASSWORD }}
           script: |
             docker image pull stephenphyo/web-004-spaceshare-frontend
             docker container stop web-004-spaceshare-frontend
