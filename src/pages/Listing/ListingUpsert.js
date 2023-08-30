@@ -342,7 +342,7 @@ function ListingUpsert() {
         else if (paramUpsert === 'update') {
             get(propertyId);
         }
-    }, [paramUpsert, initData, propertyId]);
+    }, [paramUpsert, propertyId]);
 
     useEffect(() => {
         if (!rendered) return;

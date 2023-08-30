@@ -62,20 +62,20 @@ jobs:
           file: Dockerfile.prod
           tags: stephenphyo/web-005-spaceshare-frontend:latest
 
-  # deploy:
-  #   name: Deploy to Production Environment
-  #   runs-on: ubuntu-latest
-  #   needs: build
-  #   steps:
-  #     - name: Pull Docker Image, Replace & Restart Container
-  #       uses: appleboy/ssh-action@master
-  #       with:
-  #         host: ${{ secrets.SERVER_HOSTNAME }}
-  #         username: ${{ secrets.SERVER_USERNAME }}
-  #         password: ${{ secrets.SERVER_PASSWORD }}
-  #         script: |
-  #           docker image pull username/mywebapp
-  #           docker container stop mywebapp-prod
-  #           docker container prune -f
-  #           docker run -d --name mywebapp-prod --restart unless-stopped -p 80:80 -p 443:443 username/mywebapp
-  #           docker image prune -f
+  deploy:
+    name: Deploy to Production Environment
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Pull Docker Image, Replace & Restart Container
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DELOPYMENT_SERVER_HOSTNAME }}
+          username: ${{ secrets.DELOPYMENT_SERVER_USERNAME }}
+          password: ${{ secrets.DELOPYMENT_SERVER_PASSWORD }}
+          script: |
+            docker image pull stephenphyo/web-004-spaceshare-frontend
+            docker container stop web-004-spaceshare-frontend
+            docker container prune -f
+            docker run -d --name web-004-spaceshare-frontend--restart unless-stopped -p 80:80 -p 443:443 stephenphyo/web-004-spaceshare-frontend
+            docker image prune -f
