@@ -74,8 +74,6 @@ jobs:
           username: ${{ secrets.DEPLOYMENT_SERVER_USERNAME }}
           password: ${{ secrets.DEPLOYMENT_SERVER_PASSWORD }}
           script: |
-            docker image pull docker.io/stephenphyo/web-005-spaceshare-frontend
+            docker image pull --platform linux/x86_64 docker.io/stephenphyo/web-005-spaceshare-frontend
             docker container stop web-005-spaceshare-frontend
-            docker container prune -f
-            docker run -d --name web-005-spaceshare-frontend --restart unless-stopped -p 80:80 -p 443:443 stephenphyo/web-005-spaceshare-frontend
-            docker image prune -f
+            docker run -d --name web-005-spaceshare-frontend --restart unless-stopped -p 3005:80 -p 3505:443 --platform linux/arm64 docker.io/stephenphyo/web-005-spaceshare-frontend
